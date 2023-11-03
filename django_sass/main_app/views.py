@@ -16,12 +16,12 @@ def get_books(request):
 
 
 def get_books_by_titles(titles):
-    df_books = pd.read_csv("../static/data/finish_book.csv", index_col=0)
+    df_books = pd.read_csv(".\\static\\data\\final_book.csv", index_col=0)
     return df_books[df_books['title'].isin(titles)]
 
 
 def get_recommendation(request, books_and_marks):
-    df_book_rating_user = pd.read_csv("../static/data/book_rating_user.csv", index_col=0)
+    df_book_rating_user = pd.read_csv(".\\static\\data\\book_rating_user.csv", index_col=0)
     df_user_pivot = (df_book_rating_user.pivot_table(index=["user_id"], columns=["title"], values="rating").fillna(0)
                      .reset_index(drop=True))
     user_marks = {i: [0] for i in df_user_pivot.columns}
