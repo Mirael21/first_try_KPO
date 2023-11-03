@@ -20,7 +20,12 @@ def get_books_by_titles(titles):
     return df_books[df_books['title'].isin(titles)]
 
 
-def get_recommendation(request, books_and_marks):
+def get_books_and_marks_from_json(request):
+    pass
+
+
+def get_recommendation(request):
+    books_and_marks = get_books_and_marks_from_json(request)
     df_book_rating_user = pd.read_csv(".\\static\\data\\book_rating_user.csv", index_col=0)
     df_user_pivot = (df_book_rating_user.pivot_table(index=["user_id"], columns=["title"], values="rating").fillna(0)
                      .reset_index(drop=True))
