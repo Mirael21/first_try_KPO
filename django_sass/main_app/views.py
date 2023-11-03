@@ -33,7 +33,7 @@ def get_recommendation(request, books_and_marks):
     neighbour_books = set()
     for user in sorted_sim:
         for book in df_user_pivot.iloc[user[0]].items():
-            if book[1] > 5 and book[0] not in df_book_mark.keys():
+            if book[1] > 5 and book[0] not in books_and_marks.keys():
                 neighbour_books.add(book[0])
             if len(neighbour_books) == 3:
                 return get_books_by_titles(neighbour_books)
