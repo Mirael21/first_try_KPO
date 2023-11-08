@@ -2,17 +2,28 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
+import json
 
 
 def book_page(request):
     return render(request, 'index.html')
 
 
+def make_json(df: pd.DataFrame):
+    data = {f"book_{i}": {} for i in range(df.shape[0])}
+    for i in range(df.shape[0]):
+        data[f"book_{i}"]["title"] = df.iloc[i]["title"]
+        data[f"book_{i}"]["author"] = df.iloc[i]["author"]
+        data[f"book_{i}"]["image"] = df.iloc[i]["image"]
+        data[f"book_{i}"]["description"] = df.iloc[i]["description"]
+    return json.dumps(data)
+
+
 def get_books(request):
     df = pd.read_csv(".\\main_app\\static\\data\\final_books.csv", index_col=0)
     df_10_books = df.sample(10)
     df_10_books.reset_index(drop=True, inplace=True)
-    return JsonResponse(df_10_books.to_json(), safe=False)
+    return JsonResponse(make_json(df_10_books), safe=False)
 
 
 def get_books_by_titles(titles):
@@ -43,6 +54,6 @@ def get_recommendation(request):
     #         if len(neighbour_books) == 3:
     #             return get_books_by_titles(neighbour_books)
     df = pd.read_csv(".\\main_app\\static\\data\\final_books.csv", index_col=0)
-    df_10_books = df.sample(3)
-    df_10_books.reset_index(drop=True, inplace=True)
-    return JsonResponse(df_10_books.to_json(), safe=False)
+    df_3_books = df.sample(3)
+    df_3_books.reset_index(drop=True, inplace=True)
+    return JsonResponse(make_json(df_3_books), safe=False)
