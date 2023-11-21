@@ -5,7 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/django_sass/django_sass" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/env" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.11 (first_try_KPO)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (django_sass)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
