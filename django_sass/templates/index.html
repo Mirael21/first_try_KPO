@@ -1,87 +1,162 @@
-{% load sass_tags %}
+{% load static %}
 
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <script src="https://kit.fontawesome.com/b0f29e9bfe.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 
-    <title>project</title>
-    <link href="{% sass_src 'css/main.scss' %}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="cover">
-        <div class="book">
-            <label for="page-1" class="book__page book__page--1">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/193203/1111.jpg" alt="">
-            </label>
 
-            <label for="page-2" class="book__page book__page--4">
-                <div class="page__content">
-                    <h1 class="page__content-title">I</h1>
-                    <div class="page__content-blockquote">
-                        <p class="page__content-blockquote-text">Project_KPO bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla. . . </p>
-                        <p class="page__content-blockquote-text">. . . page 2 bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla. . . . </p>
-                        <p class="page__content-blockquote-text">. . . page 3 bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  . . .</p>
-                        <span class="page__content-blockquote-reference">Encyclopedia Galactica*</span>
-                    </div>
-                    <div class="page__content-text">
-                        <p> bla bla bla bla bla bla  </p>
 
-                       </div>
-                    <div class="page__number">3</div>
+    <!-- Previous Button -->
+    <button id="prev-btn">
+        <i class="fas fa-arrow-circle-left"></i>
+    </button>
+
+
+    <!-- Book -->
+    <div id="book" class="book">
+        <!-- Paper 1 -->
+        <div id="p1" class="paper">
+            <div class="front">
+                <div id="f1" class="front-content">
+
+
+
                 </div>
-            </label>
+            </div>
+            <div class="back">
+                <div id="b1" class="back-content">
+                    <div id="rating-container1" class ="sub_but" > <label for="rating1">Rate the book:</label>
+                        <input type="number" id="rating1" name="rating1" min="1" max="10">
+                        <button id="submit-rating1" class ="but_sub">Click</button> </div>
 
-            <!-- Resets the page -->
-            <input type="radio" name="page" id="page-1" />
-
-            <!-- Goes to the second page -->
-            <input type="radio" name="page" id="page-2" />
-            <label class="book__page book__page--2">
-                <div class="book__page-front">
-                    <div class="page__content">
-                        <h1 class="page__content-book-title">KPO</h1>
-                        <h2 class="page__content-author">GACHI SQUAD</h2>
-
-                        <p class="page__content-credits">
-                            Introduction by
-                            <span>idk</span>
-                        </p>
-
-                        <p class="page__content-credits">
-                            Illustrations by
-                            <span>none</span>
-                        </p>
-
-                        <div class="page__content-copyright">
-
-                            <p>RUSSIA</p>
-                        </div>
-                    </div>
                 </div>
-                <div class="book__page-back">
-                    <div class="page__content">
-                        <h1 class="page__content-title">Contents</h1>
-                        <table class="page__content-table">
+            </div>
+        </div>
+        <!-- Paper 2 -->
+        <div id="p2" class="paper">
+            <div class="front">
+                <div id="f2" class="front-content">
+                    <div id="rating-container2" class ="sub_but" > <label for="rating2">Rate the book:</label>
+                        <input type="number" id="rating2" name="rating2" min="1" max="10">
+                        <button id="submit-rating2" class ="but_sub">Click</button> </div>
 
-                            <tr>
-                                <td align="left">Part 1</td>
-                                <td align="left">bla bla bla bla bla</td>
-                                <td align="right">1231</td>
-                            </tr>
-                        </table>
-
-                        <div class="page__number">2</div>
-                    </div>
                 </div>
-            </label>
+            </div>
+            <div class="back">
+                <div id="b2" class="back-content">
+                    <div id="rating-container3" class ="sub_but" > <label for="rating3">Rate the book:</label>
+                        <input type="number" id="rating3" name="rating3" min="1" max="10">
+                        <button id="submit-rating3" class ="but_sub">Click</button> </div>
+
+                </div>
+            </div>
+
+    </div>
+
+   <!-- Paper 3 -->
+        <div id="p3" class="paper">
+            <div class="front">
+                <div id="f3" class="front-content">
+                    <div id="rating-container4" class ="sub_but" > <label for="rating4">Rate the book:</label>
+                        <input type="number" id="rating4" name="rating4" min="1" max="10">
+                        <button id="submit-rating4" class ="but_sub">Click</button> </div>
+
+                </div>
+            </div>
+            <div class="back">
+                <div id="b3" class="back-content">
+                    <div id="rating-container5" class ="sub_but" > <label for="rating5">Rate the book:</label>
+                        <input type="number" id="rating5" name="rating5" min="1" max="10">
+                        <button id="submit-rating5" class ="but_sub">Click</button> </div>
+
+                </div>
+            </div>
+        </div>
+<!-- Paper 4 -->
+<div id="p4" class="paper">
+    <div class="front">
+        <div id="f4" class="front-content">
+            <div id="rating-container6" class ="sub_but" > <label for="rating6">Rate the book:</label>
+                        <input type="number" id="rating6" name="rating6" min="1" max="10">
+                        <button id="submit-rating6" class ="but_sub">Click</button> </div>
+
         </div>
     </div>
+    <div class="back">
+        <div id="b4" class="back-content">
+           <div id="rating-container7" class ="sub_but" > <label for="rating7">Rate the book:</label>
+                        <input type="number" id="rating7" name="rating7" min="1" max="10">
+                        <button id="submit-rating7" class ="but_sub">Click</button> </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Paper 5 -->
+<div id="p5" class="paper">
+    <div class="front">
+        <div id="f5" class="front-content">
+            <div id="rating-container8" class ="sub_but" > <label for="rating8">Rate the book:</label>
+                        <input type="number" id="rating8" name="rating8" min="1" max="10">
+                        <button id="submit-rating8" class ="but_sub">Click</button> </div>
+
+        </div>
+    </div>
+    <div class="back">
+        <div id="b5" class="back-content">
+          <div id="rating-container9" class ="sub_but" > <label for="rating9">Rate the book:</label>
+                        <input type="number" id="rating9" name="rating9" min="1" max="10">
+                        <button id="submit-rating9" class ="but_sub">Click</button> </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Paper 6 -->
+<div id="p6" class="paper">
+    <div class="front">
+        <div id="f6" class="front-content">
+         <div id="rating-container10" class ="sub_but" > <label for="rating10">Rate the book:</label>
+                        <input type="number" id="rating10" name="rating10" min="1" max="10">
+                        <button id="submit-rating10" class ="but_sub">Click</button> </div>
+
+
+        </div>
+    </div>
+    <div class="back">
+        <div id="b6" class="back-content">
+            <h1>Back 6</h1>
+        </div>
+    </div>
+</div>
+        </div>
+
+
+
+
+
+    <!-- Next Button -->
+    <button id="next-btn">
+        <i class="fas fa-arrow-circle-right"></i>
+    </button>
+
+
+<script src="{% static 'js/design.js'%}" ></script>
+<script src="{% static 'js/json_proc.js'%}" ></script>
+
 
 
 
 </body>
-
 </html>

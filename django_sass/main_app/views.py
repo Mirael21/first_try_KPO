@@ -1,8 +1,23 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import pandas as pd
+
 from sklearn.metrics.pairwise import cosine_similarity
 import json
+from django.views.decorators.csrf import csrf_exempt
+
+
+@csrf_exempt
+def save_rating(request):
+    if request.method == "POST":
+        data = json.loads(request.body.decode("utf-8"))
+        # book_0 = data.get({"book_0":[{"title" , "rating"}]})
+        # print(book_0)
+
+
+        return JsonResponse({"message": "Rating saved successfully!"})
+    else:
+        return JsonResponse({"error": "Invalid request method"})
 
 
 def book_page(request):
