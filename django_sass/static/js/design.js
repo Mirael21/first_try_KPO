@@ -6,9 +6,6 @@ const paper4 = document.querySelector("#p4");
 const paper5 = document.querySelector("#p5");
 const paper6 = document.querySelector("#p6");
 const paper7 = document.querySelector("#p7");
-
-
-
 // Event Listener
 prevBtn.addEventListener("click", goPrevPage);
 nextBtn.addEventListener("click", goNextPage);
