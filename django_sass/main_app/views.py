@@ -22,10 +22,20 @@ from django.views.decorators.csrf import csrf_exempt
 def save_rating(request):
     if request.method == "POST":
         data = json.loads(request.body.decode("utf-8"))
+        print(data)
+
+
         books_and_marks = get_books_and_marks_from_json(data)
-        recommendations = get_recommendation(books_and_marks)
-        print(recommendations)
-        return JsonResponse(recommendations, safe=False)
+        # recommendations = get_recommendation(books_and_marks)
+        # print(recommendations)
+        df = pd.read_csv(".\\main_app\\static\\data\\final_books.csv", index_col=0)
+        df_3_books = df.sample(2)
+        df_3_books.reset_index(drop=True, inplace=True)
+        print(df_3_books)
+        return JsonResponse(make_json(df_3_books), safe=False)
+
+
+        # return JsonResponse(recommendations, safe=False)
         # return JsonResponse({"message": "Rating saved successfully!"})
     else:
         return JsonResponse({"error": "Invalid request method"})
@@ -79,10 +89,6 @@ def get_recommendation(books_and_marks):
         for book in df_user_pivot.iloc[user[0]].items():
             if book[1] > 5 and book[0] not in books_and_marks.keys():
                 neighbour_books.add(book[0])
-            if len(neighbour_books) == 3:
+            if len(neighbour_books) == 2:
                 return make_json(get_books_by_titles(neighbour_books))
-    # df = pd.read_csv(".\\main_app\\static\\data\\final_books.csv", index_col=0)
-    # df_3_books = df.sample(2)
-    # df_3_books.reset_index(drop=True, inplace=True)
-    # return make_json(df_3_books)
-    # return JsonResponse(make_json(df_3_books), safe=False)
+

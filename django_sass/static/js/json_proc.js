@@ -1,4 +1,3 @@
-
 var xhr = new XMLHttpRequest();
 xhr.open("GET", "get_books/", true);
 xhr.onreadystatechange = function() {
@@ -44,7 +43,7 @@ for (var i = 5; i < 10; i++) {
 
     var frontContent = document.createElement("section");
     frontContent.classList.add("section-front");
-    frontContent.innerHTML = "<h1>" + book.title + "</h1>  <p>" + book.author + "</p>" + "<p>" + book.description + "</p><img ñlass = 'book-image' src='" + book.image + "' alt='" + book.title + "'>";
+    frontContent.innerHTML = "<h1>" + book.title + "</h1>  <p>" + book.author + "</p>" + "<p>" + book.description + "</p><img ?lass = 'book-image' src='" + book.image + "' alt='" + book.title + "'>";
 
     books_title.push(book.title);
 
@@ -194,6 +193,7 @@ console.log(rate);
 
 
 if (rate[0] > 0 && rate[1] > 0 && rate[2] > 0 && rate[3] > 0 && rate[4] > 0 && rate[5] > 0 && rate[6] > 0 && rate[7] > 0 && rate[8] > 0 && rate[9] > 0 ){
+
         saveRating(book, rate);
 }
 });
@@ -230,7 +230,54 @@ console.log(data);
 
 xhr.onreadystatechange = function() {
 if (xhr.readyState === 4 && xhr.status === 200) {
-console.log("Rating saved successfully!");
+    console.log("Rating saved successfully!");
+    var books_rec = JSON.parse(xhr.responseText);
+    books_rec = JSON.parse(books_rec);
+
+
+    console.log(books_rec);
+    console.log("something");
+
+
+    var recbookKey1 = "book_0";
+    var book = books_rec[recbookKey1];
+
+
+  if (book && book.title && book.author && book.description && book.image) {
+
+
+    var backContent = document.createElement("section");
+    backContent.classList.add("section-back");
+    backContent.innerHTML = "<h1>" + book.title + "</h1>  <p>" + book.author + "</p>" + "<p>" + book.description + "</p><img src='" + book.image + "' alt='" + book.title + "'>";
+    var backElement = document.getElementById("b6");
+
+    if (backElement) {
+
+      backElement.appendChild(backContent);
+
+    }
+}
+
+
+ var recbookKey2 = "book_1";
+    var book = books_rec[recbookKey2];
+
+
+  if (book && book.title && book.author && book.description && book.image) {
+
+
+    var frontContent = document.createElement("section");
+    frontContent.classList.add("section-front");
+    frontContent.innerHTML = "<h1>" + book.title + "</h1>  <p>" + book.author + "</p>" + "<p>" + book.description + "</p><img src='" + book.image + "' alt='" + book.title + "'>";
+    var frontElement = document.getElementById("f7");
+
+    if (frontElement) {
+
+      frontElement.appendChild(frontContent);
+
+    }
+}
+
 }
 };
 
